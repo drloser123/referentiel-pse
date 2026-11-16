@@ -1,10 +1,10 @@
-# Référentiel PSE 2026 — version mobile
+# Références techniques PSE 2026 — version mobile
 
 Version consultable sur téléphone des *Références techniques nationales* PSE (édition 2026), générée automatiquement à partir du PDF officiel.
 
 **Site : https://drloser123.github.io/referentiel-pse/**
 
-L'objectif est de pouvoir lire le référentiel confortablement sur un petit écran, sans changer ni supprimer un seul mot : page d'accueil avec les sections et les fiches, une fiche par écran, recherche plein texte avec le nombre d'occurrences par fiche.
+L'objectif est de pouvoir lire les références techniques confortablement sur un petit écran, sans changer ni supprimer un seul mot : page d'accueil avec les sections et les fiches, une fiche par écran, recherche plein texte avec le nombre d'occurrences par fiche.
 
 ---
 
@@ -104,7 +104,7 @@ python3 build.py   out/pages.json ..     # écrit ../index.html
 cp out/img/* ../img/
 ```
 
-Le PDF du référentiel n'est pas inclus dans ce dépôt.
+Le PDF des références techniques n'est pas inclus dans ce dépôt.
 
 ## Limites connues
 
