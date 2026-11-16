@@ -31,10 +31,10 @@ button{cursor:pointer}
 
 /* ---------- top bar ---------- */
 .top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;gap:8px;min-height:52px}
-.brand{flex:1;display:flex;flex-direction:column;line-height:1.15}
-.brand b{font-size:18px}
-.brand small{color:var(--mut);font-size:13px}
+.bar{display:flex;align-items:center;gap:8px;min-height:40px}
+.brand{flex:1;display:flex;align-items:baseline;gap:6px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand b{font-size:14px}
+.brand small{color:var(--mut);font-size:12px;overflow:hidden;text-overflow:ellipsis}
 .ib{width:44px;height:44px;border:0;background:transparent;border-radius:10px;display:grid;place-items:center;flex:none}
 .ib:active{background:var(--bg2)}
 .ib svg{width:24px;height:24px}
@@ -200,7 +200,7 @@ figure img{max-width:100%;height:auto;background:#fff;cursor:zoom-in}
   <div class="wrap">
     <div class="bar" id="hbar">
       <button class="ib" id="back" aria-label="Retour au sommaire" hidden><svg><use href="#i-back"/></svg></button>
-      <div class="brand" id="brand"><b>Référentiel PSE</b><small>Références techniques nationales · 2026</small></div>
+      <div class="brand" id="brand"><b>Référentiel PSE</b> <small>Références techniques nationales · 2026</small></div>
       <div class="vtitle" id="vtitle" hidden></div>
       <div class="fsz" id="fsz" hidden>
         <button class="ib" id="fminus" aria-label="Réduire le texte">A−</button>
