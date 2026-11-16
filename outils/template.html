@@ -305,7 +305,7 @@ list.innerHTML = SECS.map((s, si) => {
   const its = ITEMS.filter(it => it.s === si);
   const head = si === 0 ? '' :
     '<button class="sec-h" data-s="' + si + '" aria-expanded="true"><span class="n">' + String(si).padStart(2, '0') + '</span><span class="st">' + esc(s.t) + '</span>' +
-    '<span class="cnt" id="cs' + si + '"></span><span class="pp">p. ' + s.a + '–' + s.b + '</span><svg class="tw2"><use href="#i-down"/></svg></button>';
+    '<span class="pp">p. ' + s.a + '–' + s.b + '</span><span class="cnt" id="cs' + si + '"></span><svg class="tw2"><use href="#i-down"/></svg></button>';
   return '<div class="grp' + (closed[si] ? ' closed' : '') + '" id="s' + si + '">' + head + '<ol class="fl">' + its.map(it =>
     '<li id="i-' + it.c + '"><a href="#' + it.c + '"><span class="tag ' + typeOf(it.c) + '">' + (it.r ? it.c : '') + '</span>' +
     '<span class="ftt">' + (it.h || esc(it.t)) + '</span><span class="lv">' + lvl(it.r) + '</span><span class="pgn">' + it.a + '</span><span class="cnt" id="c-' + it.c + '"></span></a></li>').join('') + '</ol></div>';
