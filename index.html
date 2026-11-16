@@ -174,6 +174,12 @@ figure img{max-width:100%;height:auto;background:#fff;cursor:zoom-in}
 #hits.on{display:flex}
 #hits .ib:active{background:rgba(127,127,127,.25)}
 #hcount{min-width:76px;text-align:center;font-weight:700}
+#hits.none{flex-direction:column;align-items:stretch;border-radius:16px;padding:10px 14px;width:min(92vw,360px);white-space:normal}
+#hits.none #hprev,#hits.none #hnext{display:none}
+#hits.none #hall{position:absolute;top:2px;right:2px;width:36px;height:36px}
+#hits.none #hcount{font-weight:600;font-size:14px;padding-right:28px;text-align:left}
+#hcount small{display:block;font-weight:400;opacity:.75;margin-top:2px}
+#hgo{display:block;width:100%;margin-top:8px;min-height:40px;border:0;border-radius:10px;background:#48a5d8;color:#fff;font-weight:700;font-size:14px}
 #zoom{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.92);display:none;overflow:auto}
 #zoom.on{display:block}
 #zoom img{display:block;width:100%;height:auto;background:#fff;margin:auto}
@@ -9412,7 +9418,14 @@ function mark(){
   showCount();
 }
 function hideHits(){ $('hits').classList.remove('on'); hits = []; hi = -1; }
-function showCount(){ $('hcount').textContent = hits.length ? (hi >= 0 ? hi + 1 : '–') + ' / ' + hits.length : 'Aucun résultat'; }
+function showCount(){
+  const none = !hits.length;
+  $('hits').classList.toggle('none', none);
+  if (!none) { $('hcount').textContent = (hi >= 0 ? hi + 1 : '–') + ' / ' + hits.length; return; }
+  let other = 0, nf = 0;
+  if (re && cur) { const T = allTexts(); ITEMS.forEach((it, i) => { if (it === cur) return; const c = countIn(T[i], re); if (c) { other += c; nf++; } }); }
+  $('hcount').innerHTML = 'Aucune occurrence dans cette fiche' + (nf ? '<button type="button" id="hgo">Voir les ' + nf + ' autre' + (nf > 1 ? 's' : '') + ' fiche' + (nf > 1 ? 's' : '') + ' ›</button>' : '<small>ni ailleurs dans le référentiel</small>');
+}
 function go(n){
   if (!hits.length) return;
   if (hits[hi]) hits[hi].classList.remove('cur');
@@ -9439,6 +9452,7 @@ $('clr').addEventListener('click', () => { q.value = ''; q.dispatchEvent(new Eve
 $('hprev').addEventListener('click', () => go(hi - 1));
 $('hnext').addEventListener('click', () => go(hi + 1));
 $('hall').addEventListener('click', () => { location.hash = ''; });
+$('hits').addEventListener('click', e => { if (e.target.id === 'hgo') location.hash = ''; });
 $('back').addEventListener('click', () => { location.hash = ''; });
 
 /* ---- navigation ---- */
